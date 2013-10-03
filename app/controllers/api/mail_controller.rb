@@ -7,13 +7,20 @@ class Api::MailController < ApplicationController
 
   def create
 
-    begin
-      REDIS.set("sample_post", JSON.parse(params[:mandrill_events]))
+      if ENV['TEST_MODE'].nil?
+        data = JSON.parse(params[:mandrill_events])
+      else
+        data = ""
+
+        File.open("mail_data.txt", "r") do |f|
+          data = f.read
+        end
+
+      end
+
+      REDIS.set("sample_data", data)
       render :status => 200, :text => nil, :layout => nil
-    rescue
-      render :text => nil, :status => 500
-    end
- 
+
      return
   end
 
@@ -24,7 +31,7 @@ class Api::MailController < ApplicationController
   end
 
   def show
-    render text: REDIS.get("sample_post"), layout: nil
+    render text: REDIS.get("sample_data"), layout: nil
     return
   end
 
