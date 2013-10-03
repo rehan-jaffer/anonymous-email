@@ -8,4 +8,6 @@ Anonymail::Application.routes.draw do
 
   end
 
+  devise_for :user
+
 end

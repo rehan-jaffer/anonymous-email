@@ -14,12 +14,11 @@ group :production do
 end
 
 gem 'twitter-bootstrap-rails', :github => 'seyhunak/twitter-bootstrap-rails', :branch => "bootstrap3"
-gem 'devise'
 gem 'less-rails'
 gem 'haml-rails'
 gem 'mandrill'
 gem 'redis'
-gem 'devise'
+gem 'devise', '3.0.0'
 gem 'simple_form'
 
 # Use SCSS for stylesheets
