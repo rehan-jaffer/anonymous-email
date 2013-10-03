@@ -14,6 +14,8 @@ Anonymail::Application.configure do
   config.consider_all_requests_local       = false
   config.action_controller.perform_caching = true
 
+  ENV['REDISTOGO_URL'] = "redis://redistogo:ece77f182bc343814fff10c0aff85660@soldierfish.redistogo.com:9070/"
+
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.
   # For large-scale production use, consider using a caching reverse proxy like nginx, varnish or squid.
