@@ -3,4 +3,25 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates_uniqueness_of :email
+
+  after_create :add_uid
+
+  def add_uid
+   self.uid = generate_uid(8)
+   save
+  end
+
+  def generate_uid(length)
+
+  alphabet = [('a'..'z')].map { |i| i.to_a }.flatten
+  string = (0...length).map{ alphabet[rand(alphabet.length)] }.join
+    
+  end
+
+  def mailbox
+  
+  end
+
 end
