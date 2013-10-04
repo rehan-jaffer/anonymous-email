@@ -1,22 +1,22 @@
 == Anonymail Project
 
-  The following inputs would be useful:
-    * I'm using AnonyMail as the working name for the project, will use it in logo text but not hard set it anywhere, if the service name is decided I can use that, and also design a working logo around it to help lay out the front page
-    * Will build a skeletal layout with some nice design tweaks, but this is simply for the purpose of presentation of functionality. If you're happy with keeping the design that way, that's fine, otherwise I'm open to suggestions.
-    * Any copy or sample text to be used in the layouts would also be useful, but not critical, can use lorem ipsum text for now
+The following inputs would be useful:
+* I'm using AnonyMail as the working name for the project, will use it in logo text but not hard set it anywhere, if the service name is decided I can use that, and also design a working logo around it to help lay out the front page
+* Will build a skeletal layout with some nice design tweaks, but this is simply for the purpose of presentation of functionality. If you're happy with keeping the design that way, that's fine, otherwise I'm open to suggestions.
+* Any copy or sample text to be used in the layouts would also be useful, but not critical, can use lorem ipsum text for now
 
 === Progress
 
-  * User Authentication - set up and working, currently also works on heroku at http://shielded-taiga-5671.herokuapp.com using Mandrill's email server
-  * Mandrill endpoint for delivering mails to set up at /api/mail with a POST request
-  * A user can currently sign up, confirm their email, and see their anonymous email address on the welcome screen of the dashboard. Emails sent to this address will be entered into the mail queue, but are not yet retrievable by the user.mailbox function (will be working in the next 24 hours) which will allow users to view their last 10 messages
+* User Authentication - set up and working, currently also works on heroku at http://shielded-taiga-5671.herokuapp.com using Mandrill's email server
+* Mandrill endpoint for delivering mails to set up at /api/mail with a POST request
+* A user can currently sign up, confirm their email, and see their anonymous email address on the welcome screen of the dashboard. Emails sent to this address will be entered into the mail queue, but are not yet retrievable by the user.mailbox function (will be working in the next 24 hours) which will allow users to view their last 10 messages
 
 === Additions (still to be added)
 
-  * Addition of rolify gem to provide separation of user and admin roles, redirect an admin straight to the admin account on sign-in
-  * Mail sending script, the script should run on a timer in the background to dispatch emails, and only remove them from the mail_queue (listed below) if delivery was successful, otherwise it should be pushed to the bottom of the queue and retried (if the item is the only item, the script should attempt resending at increasing intervals)
+* Addition of rolify gem to provide separation of user and admin roles, redirect an admin straight to the admin account on sign-in
+* Mail sending script, the script should run on a timer in the background to dispatch emails, and only remove them from the mail_queue (listed below) if delivery was successful, otherwise it should be pushed to the bottom of the queue and retried (if the item is the only item, the script should attempt resending at increasing intervals)
 
 === Redis Resources:
-  * mail_queue -> list of mail GUIDs, these will be popped out of the list by background job and the mail dispatched
-  * mailbox_uid -> mailbox with the suffix of the user's anonymous email address prefix, contains a list of mail_guids
-  * mail_guid -> will contain the contents of the message along with any metadata, either json encoded or as a hash
+* mail_queue -> list of mail GUIDs, these will be popped out of the list by background job and the mail dispatched
+* mailbox_uid -> mailbox with the suffix of the user's anonymous email address prefix, contains a list of mail_guids
+* mail_guid -> will contain the contents of the message along with any metadata, either json encoded or as a hash
