@@ -13,12 +13,13 @@ class Api::MailController < ApplicationController
         data = ""
 
         File.open("mail_data.txt", "r") do |f|
-          data = f.read
+          data = JSON.parse(f.read)
         end
 
       end
 
-      REDIS.set("sample_data", data)
+      Mailbox.add(data)
+
       render :status => 200, :text => nil, :layout => nil
 
      return

@@ -77,6 +77,16 @@ Anonymail::Application.configure do
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 
+  config.action_mailer.default_url_options = {:host => 'smtp.mandrillapp.com'}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.mandrillapp.com",
+    :port    => "587",
+    :domain  => 'personal.bosonstudios.com',
+    :user => "ray@thelondonvandal.com",
+    :password => "3h1ixEfqtEcLWAlTES9VZw"
+  }
+
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
 end
