@@ -84,7 +84,7 @@ Anonymail::Application.configure do
     :address => "smtp.mandrillapp.com",
     :port    => "587",
     :domain  => 'personal.bosonstudios.com',
-    :user => "ray@thelondonvandal.com",
+    :user_name => "ray@thelondonvandal.com",
     :password => "3h1ixEfqtEcLWAlTES9VZw"
   }
 
