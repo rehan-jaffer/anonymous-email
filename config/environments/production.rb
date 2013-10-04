@@ -77,7 +77,7 @@ Anonymail::Application.configure do
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 
-  config.action_mailer.default_url_options = {:host => 'smtp.mandrillapp.com'}
+  config.action_mailer.default_url_options = {:host => 'http://shielded-taiga-5671.herokuapp.com/'}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_options = {:from => "admin@personal.bosonstudios.com"}
   config.action_mailer.smtp_settings = {
