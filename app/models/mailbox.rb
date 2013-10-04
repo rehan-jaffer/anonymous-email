@@ -10,13 +10,13 @@ class Mailbox
         uid = datum["msg"]["to"].split("@")[0]
         REDIS.rpush("mailbox_#{uid}", mail_guid)
         REDIS.rpush("mail_queue", mail_guid)
-        REDIS.set("mailbox_#{mail_guid}", datum["msg"].to_json)      
+        REDIS.set("mail_#{mail_guid}", datum["msg"].to_json)      
 
      end
 
   end
 
-  def delete
+  def self.delete
 
   end
 
