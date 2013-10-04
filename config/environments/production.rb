@@ -79,6 +79,7 @@ Anonymail::Application.configure do
 
   config.action_mailer.default_url_options = {:host => 'smtp.mandrillapp.com'}
   config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_options = {:from => "admin@personal.bosonstudios.com"}
   config.action_mailer.smtp_settings = {
     :address => "smtp.mandrillapp.com",
     :port    => "587",
