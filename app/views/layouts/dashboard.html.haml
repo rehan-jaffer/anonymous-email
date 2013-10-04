@@ -21,8 +21,10 @@
   %body
 
     .container
+      %nav.navbar.navbar-fixed-top.navbar-inverse(role="navigation")
+
       .row
-        .col-lg-3
+        .col-lg-4.sidebar-navigation
           %h3 Welcome!
           = render :partial => "sidebar"
         .col-lg-8
