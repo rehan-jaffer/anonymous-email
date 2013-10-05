@@ -5,6 +5,7 @@ Anonymail::Application.routes.draw do
   namespace :users do
     
     resources :dashboard, :only => [:index]
+    resources :mail
 
   end
 
@@ -13,6 +14,7 @@ Anonymail::Application.routes.draw do
     resources :mail
 
   end
+
 
   devise_for :user
 
