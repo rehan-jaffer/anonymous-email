@@ -1,5 +1,3 @@
-require 'pp'
-
 class Mailbox
 
   def self.add(data)
@@ -10,8 +8,7 @@ class Mailbox
       data.to_a.each do |datum|
 
         output_var = ""
-        pp(datum, output_var)
-        Rails.logger.info output_var
+        Rails.logger.info datum.to_json
         uid = datum["msg"]["to"][0][0].split("@")[0]
         REDIS.rpush("mailbox_#{uid}", mail_guid)
         REDIS.rpush("mail_queue", mail_guid)
