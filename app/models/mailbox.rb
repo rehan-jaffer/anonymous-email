@@ -11,6 +11,7 @@ class Mailbox
 
         Rails.logger.info datum.to_yaml
         uid = datum["msg"]["to"].split("@")[0]
+        Rails.logger.info "UID ---- #{uid}"
         REDIS.rpush("mailbox_#{uid}", mail_guid)
         REDIS.rpush("mail_queue", mail_guid)
         REDIS.set("mail_#{mail_guid}", datum["msg"].to_json)    
