@@ -19,9 +19,10 @@ class Mailbox
         message_object[:html] = datum["msg"]["html"]
         message_object[:subject] = datum["msg"]["subject"]
 
-        Rails.logger.info message_object.to_yaml
-
-        REDIS.set("mail_#{mail_guid}", datum["msg"].to_json)    
+        REDIS.hset("mail_#{mail_guid}", "sender", message_object[:sender])    
+        REDIS.hset("mail_#{mail_guid}", "text", message_object[:text])    
+        REDIS.hset("mail_#{mail_guid}", "html", message_object[:html])    
+        REDIS.hset("mail_#{mail_guid}", "subject", message_object[:subject])    
 
      end
 
