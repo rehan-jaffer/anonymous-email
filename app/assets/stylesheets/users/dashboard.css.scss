@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
-  margin-top: 30px;
+  margin-top: 50px;
 }
 
 .sidebar-navigation {
@@ -12,4 +12,15 @@ body {
 
 .navigation-bar {
   list-style-type: none;
+}
+
+.mail-table {
+
+  min-width: 500px;
+
+  th {
+    padding: 10px;
+  }
+
+
 }
