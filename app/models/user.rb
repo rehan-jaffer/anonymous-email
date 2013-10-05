@@ -27,9 +27,7 @@ class User < ActiveRecord::Base
    keys.each do |key|
 
      begin
-       mail << REDIS.hget("mail_#{key}")
-     rescue
-       mail << REDIS.get("mail_#{key}")
+       mail << REDIS.hgetall("mail_#{key}")
      end
 
    end
