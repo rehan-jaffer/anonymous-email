@@ -25,7 +25,13 @@ class User < ActiveRecord::Base
    mail = []
    keys = REDIS.lrange("mailbox_#{uid}", 0, 10)
    keys.each do |key|
-     mail << REDIS.get("mail_#{key}")
+
+     begin
+       mail << REDIS.hget("mail_#{key}")
+     rescue
+       mail << REDIS.get("mail_#{key}")
+     end
+
    end
   
    return mail
