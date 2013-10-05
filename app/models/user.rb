@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
      mail << REDIS.get("mail_#{key}")
    end
   
+   return mail
+  
   end
 
 end
