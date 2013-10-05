@@ -9,7 +9,9 @@ class Api::MailController < ApplicationController
 
       if ENV['TEST_MODE'].nil?
         data = JSON.parse(params[:mandrill_events])
+
       else
+
         data = ""
 
         File.open("mail_data.txt", "r") do |f|

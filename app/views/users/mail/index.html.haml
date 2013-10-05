@@ -1,0 +1,10 @@
+%table
+  %thead
+    %th Sender
+    %th Subject
+    %th Date Received
+- current_user.mailbox.each do |mail|
+  %tr
+    %td= mail["sender"]  
+    %td= mail["subject"]  
+    %td nil  
