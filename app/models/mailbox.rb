@@ -14,10 +14,10 @@ class Mailbox
         REDIS.rpush("mail_queue", mail_guid)
 
         message_object = {}
-        message_object[:sender] = datum["from_email"]
-        message_object[:text] = datum["text"]
-        message_object[:html] = datum["html"]
-        message_object[:subject] = datum["subject"]
+        message_object[:sender] = datum["msg"]["from_email"]
+        message_object[:text] = datum["msg"]["text"]
+        message_object[:html] = datum["msg"]["html"]
+        message_object[:subject] = datum["msg"]["subject"]
 
         Rails.logger.info message_object.to_yaml
 
