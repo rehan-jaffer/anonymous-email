@@ -1,10 +1,10 @@
-%table
+%table.table-bordered.mail-table
   %thead
     %th Sender
     %th Subject
     %th Date Received
-- current_user.mailbox.each do |mail|
-  %tr
-    %td= mail["sender"]  
-    %td= mail["subject"]  
-    %td nil  
+  - current_user.mailbox.each do |mail|
+    %tr
+      %td= mail["sender"]  
+      %td= link_to mail["subject"], "#"
+      %td nil  
