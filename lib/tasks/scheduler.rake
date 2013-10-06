@@ -1,4 +1,4 @@
-task :send_mail => :production do
+task :send_mail => :environment do
 
   MailQueue.dispatch
 
