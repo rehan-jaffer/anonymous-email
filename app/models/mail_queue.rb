@@ -20,7 +20,7 @@ class MailQueue
         report[:sends] += 1
       rescue
         report[:failures] += 1
-        REDIS.push("errors", item)
+        REDIS.lpush("errors", item)
       end
 
       Rails.logger.info report.to_yaml
