@@ -1,12 +1,21 @@
 class MailQueue
 
-  def list
+  def self.list
     entries = REDIS.llen
   end
 
-  def dispatch
+  def self.dispatch
     entries = REDIS.llen
     queue = REDIS.lrange("mail_queue", 0, entries)
+    
+    queue.each do |item|
+      
+      mail = REDIS.hget("mailbox_#{item}")
+      # send mail placeholder
+      Rails.logger.info mail.to_yaml
+
+    end
+
   end
 
 end

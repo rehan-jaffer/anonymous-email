@@ -10,6 +10,7 @@ class Mailbox
         output_var = ""
         Rails.logger.info datum.to_json
         uid = datum["msg"]["to"][0][0].split("@")[0]
+        real_address = User.find_by_uid(uid).email
         REDIS.rpush("mailbox_#{uid}", mail_guid)
         REDIS.rpush("mail_queue", mail_guid)
 
@@ -20,6 +21,7 @@ class Mailbox
         message_object[:subject] = datum["msg"]["subject"]
 
         REDIS.hset("mail_#{mail_guid}", "sender", message_object[:sender])    
+        REDIS.hset("mail_#{mail_guid}", "address", real_address)
         REDIS.hset("mail_#{mail_guid}", "text", message_object[:text])    
         REDIS.hset("mail_#{mail_guid}", "html", message_object[:html])    
         REDIS.hset("mail_#{mail_guid}", "subject", message_object[:subject])    
