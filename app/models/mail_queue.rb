@@ -12,14 +12,16 @@ class MailQueue
     
     queue.each do |item|
       
+    begin
       mail = REDIS.hgetall("mail_#{item}")
       mailer = Remailer.remail(mail).deliver
       REDIS.lpop("mail_queue")
       REDIS.hset("mail_#{item}", "sent", 1)
       report[:sends] += 1
-#        report[:failures] += 1
-#        REDIS.lpush("errors", item)
-
+    rescue
+      report[:failures] += 1
+      REDIS.lpush("errors", item)
+    end
       Rails.logger.info report.to_yaml
 
     end
