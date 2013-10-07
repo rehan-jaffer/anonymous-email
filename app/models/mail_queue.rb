@@ -16,7 +16,7 @@ class MailQueue
       begin
         mailer = Remailer.remail(mail).deliver
         REDIS.lpop("mail_queue")
-        REDIS.set("mail_#{item}", sent, 1)
+        REDIS.set("mail_#{item}", "sent", 1)
         report[:sends] += 1
       rescue
         report[:failures] += 1
