@@ -11,7 +11,8 @@ class MailQueue
     queue.each do |item|
       
       mail = REDIS.hgetall("mail_#{item}")
-      # send mail placeholder
+      mailer = Remailer.new(mail)
+      mailer.remail
       Rails.logger.info mail.to_yaml
 
     end
