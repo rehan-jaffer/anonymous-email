@@ -10,7 +10,7 @@ class MailQueue
     
     queue.each do |item|
       
-      mail = REDIS.hgetall("mailbox_#{item}")
+      mail = REDIS.hgetall("mail_#{item}")
       # send mail placeholder
       Rails.logger.info mail.to_yaml
 
