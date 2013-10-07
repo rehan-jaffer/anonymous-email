@@ -5,7 +5,7 @@ class MailQueue
   end
 
   def self.dispatch
-    entries = REDIS.llen
+    entries = REDIS.llen("mail_queue")
     queue = REDIS.lrange("mail_queue", 0, entries)
     
     queue.each do |item|
