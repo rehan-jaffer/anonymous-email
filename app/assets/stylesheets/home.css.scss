@@ -2,27 +2,100 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import url(http://fonts.googleapis.com/css?family=Rambla:400,700|News+Cycle:400,700|Anaheim|Capriola);
+
 body {
 
-  padding-top: 15px;
+  margin-top: 0;
+  padding-top: 0;
 
 }
 
 .sign-in-box {
 
-  padding-top: 25px;
-  padding-left: 25px;
 
 }
 
 .devise-registration-form {
   
-  input {
-    margin: 10px;
+}
+
+.homepage-navbar {
+
+  list-style-type: none;
+  height: 40px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  border: 0;
+  border-style: solid;
+  border-color: #000;
+  margin-left: auto;
+  margin-right: auto;
+
+  li {
+    display: inline-block;
+    a {
+      font-family: "Rambla";
+      font-weight: 700;
+      font-size: 1.3em;
+      color: #000;
+    }
+
   }
+
+}
+
+.form-row {
+}
+
+.homepage-login-form {
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 5px;
 
   label {
-    width: 100px;
+    font-family: "Rambla";
+    font-size: 1.1em;
+    color: #fff;
   }
 
+}
+
+.homepage-promo-box {
+  position: relative;
+  height: 200px;
+}
+
+.benefits-box {
+  margin: 20px;
+  margin-top: 0px;
+  list-style-type: none;
+  font-family: "Rambla";
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: right;
+  color: #000;
+
+  li {
+    padding: 3px;
+  }
+
+}
+
+.logo {
+  background-color: #fff;
+  border-width: #000;
+  width: 150px;
+  height: 150px;
+}
+
+.header-background-image {
+  height: 150px;
+}
+
+footer {
+  text-align: center;
 }
