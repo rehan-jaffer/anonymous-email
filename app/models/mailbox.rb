@@ -28,6 +28,8 @@ class Mailbox
         REDIS.hset("mail_#{mail_guid}", "subject", message_object[:subject])    
         REDIS.hset("mail_#{mail_guid}", "sent", 0)
 
+        Rails.logger.info message_object.to_yaml
+
      end
 
   end
