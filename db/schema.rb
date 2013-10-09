@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131004135714) do
+ActiveRecord::Schema.define(version: 20131009102016) do
+
+  create_table "attachments", force: true do |t|
+    t.string   "upload_file_name"
+    t.string   "upload_content_type"
+    t.integer  "upload_file_size"
+    t.datetime "upload_updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.datetime "created_at"
@@ -31,6 +38,7 @@ ActiveRecord::Schema.define(version: 20131004135714) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string   "unconfirmed_email"
+    t.string   "authentication_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
