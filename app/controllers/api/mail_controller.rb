@@ -33,12 +33,8 @@ class Api::MailController < ApplicationController
   def edit
   end
 
-  def index
-    render json: User.find(params[:user_id]).mailbox
-  end
-
   def show
-    render json: REDIS.hget("mail_#{params[:guid]}")
+    render json: current_api_user.get_mail(params[:guid], current_api_user.uid)
     return
   end
 
