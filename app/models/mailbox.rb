@@ -43,7 +43,7 @@ class Mailbox
               f.write attachment["content"]
             end
 
-            attachment.content = File.read(filename)
+            attachment.upload = File.read(filename)
             attachment.save
 
             REDIS.rpush("mail_attachments", "#{mail_guid}_#{n}")
@@ -61,7 +61,7 @@ class Mailbox
 
         REDIS.hset("mail_#{mail_guid}", "sent", 0)
 
-        Rails.logger.info message_object.to_yaml
+        Rails.logger.info datum.to_yaml
 
      end
 
