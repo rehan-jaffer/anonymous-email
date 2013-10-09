@@ -6,13 +6,13 @@
 </div>
 
 <div class = "col-md-5">
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :class => "form-horizontal") do |f| %>
   <%= f.error_notification %>
 
   <div class="devise-registration-form form-inputs">
-    <%= f.input :email, :required => true, :autofocus => true %>
-    <%= f.input :password, :required => true %>
-    <%= f.input :password_confirmation, :required => true %>
+      <%= f.input :email, :required => true, :autofocus => true %>
+      <%= f.input :password, :required => true %>
+      <%= f.input :password_confirmation, :required => true %>
   </div>
 
   <div class="form-actions">

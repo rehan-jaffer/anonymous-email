@@ -16,16 +16,37 @@ class Mailbox
 
         message_object = {}
         message_object[:sender] = datum["msg"]["from_email"]
+        message_object[:sender] = datum["msg"]["from_name"]
         message_object[:text] = datum["msg"]["text"]
         message_object[:html] = datum["msg"]["html"]
         message_object[:subject] = datum["msg"]["subject"]
 
         REDIS.hset("mail_#{mail_guid}", "sender", message_object[:sender])    
+        REDIS.hset("mail_#{mail_guid}", "name", message_object[:name])    
         REDIS.hset("mail_#{mail_guid}", "address", real_address)
         REDIS.hset("mail_#{mail_guid}", "uid", uid)
         REDIS.hset("mail_#{mail_guid}", "text", message_object[:text])    
         REDIS.hset("mail_#{mail_guid}", "html", message_object[:html])    
         REDIS.hset("mail_#{mail_guid}", "subject", message_object[:subject])    
+
+        if datum["attachments"].length > 0
+
+          n = 0
+
+          datum["attachments"].each do |attachment|
+            n += 1
+            attachment = Attachment.new
+            REDIS.rpush("mail_attachments", "#{mail_guid}_#{n}")
+            REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "filename", attachment["name"])
+            REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "type", attachment["type"])
+            REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "content", attachment["content"])
+            REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "base64", attachment["base64"])
+          end
+
+        else
+          REDIS.hset("mail_#{mail_guid}", "has_attachments", 0)
+        end
+
         REDIS.hset("mail_#{mail_guid}", "sent", 0)
 
         Rails.logger.info message_object.to_yaml

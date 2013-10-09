@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable, :token_authenticatable
 
   validates_uniqueness_of :email
 
@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
   
    return mail
   
+  end
+
+  def as_json(opts={})
+    {:email => email, :received_emails => 0, :anonymous_email => "#{uid}@personal.bosonstudios.com"}
   end
 
 end
