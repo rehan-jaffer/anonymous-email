@@ -29,11 +29,11 @@ class Mailbox
         REDIS.hset("mail_#{mail_guid}", "html", message_object[:html])    
         REDIS.hset("mail_#{mail_guid}", "subject", message_object[:subject])    
 
-        if !datum["attachments"].nil? && datum["attachments"].to_a.size > 0
+        if !datum["msg"]["attachments"].nil? && datum["attachments"].to_a.size > 0
 
           n = 0
 
-          datum["attachments"].each do |attachment|
+          datum["msg"]["attachments"].each do |attachment|
             Rails.logger.info attachment.to_yaml
             n += 1
             REDIS.rpush("mail_attachments_#{mail_guid}", "#{mail_guid}_#{n}")
