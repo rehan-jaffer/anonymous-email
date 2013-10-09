@@ -3,9 +3,6 @@ class Remailer < ActionMailer::Base
 
   def remail(mail_object, attachments)
     @content = mail_object["html"]
-    mail(to: mail_object["address"], subject: mail_object["subject"]) do |format|
-              format.text { render text: mail_object["text"], layout: nil }
-              format.html { render html: @content }
 
       if attachments.size > 0
     
@@ -14,6 +11,11 @@ class Remailer < ActionMailer::Base
         end
 
       end
+
+      mail(to: mail_object["address"], subject: mail_object["subject"], attachments: attachments) do |format|
+              format.text { render text: mail_object["text"], layout: nil }
+              format.html { render html: @content }
+
 
     end
     
