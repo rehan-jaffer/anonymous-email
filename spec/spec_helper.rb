@@ -46,7 +46,5 @@ RSpec.configure do |config|
     @user.confirm!
   end
 
-  config.include TokenHelper
-
 end
 
