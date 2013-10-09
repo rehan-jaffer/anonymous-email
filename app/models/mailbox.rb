@@ -34,6 +34,7 @@ class Mailbox
           n = 0
 
           datum["attachments"].each do |attachment|
+            Rails.logger.info attachment.to_yaml
             n += 1
             REDIS.rpush("mail_attachments_#{mail_guid}", "#{mail_guid}_#{n}")
             REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "filename", attachment["name"])
