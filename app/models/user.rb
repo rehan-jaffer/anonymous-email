@@ -36,6 +36,8 @@ class User < ActiveRecord::Base
    mail_paginator = RedisPagination.paginate("mailbox_#{uid}")
    keys = mail_paginator.page(page)[:items]
 
+   mail = []
+
    keys.each do |key|
 
      begin
