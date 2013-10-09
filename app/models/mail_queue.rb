@@ -13,7 +13,7 @@ class MailQueue
     
     queue.each do |item|
 
-    attachments = REDIS.llen("mail_attachments_#{mail_guid}")
+    attachments = REDIS.llen("mail_attachments_#{item}")
 
     mail_attachments = []
 
@@ -22,7 +22,7 @@ class MailQueue
     if attachments.size > 0
       attachments.each do |attachment|
         n += 1      
-        mail_attachments = REDIS.hget("mail_attachment_#{mail_guid}_#{n}")
+        mail_attachments = REDIS.hget("mail_attachment_#{item}_#{n}")
       end
 
     end
