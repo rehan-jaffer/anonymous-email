@@ -14,7 +14,7 @@ class MailQueue
       
     begin
       mail = REDIS.hgetall("mail_#{item}")
-      mailer = Remailer.remail(mail).deliver
+      mailer = Remailer.remail(mail, []).deliver
       REDIS.lpop("mail_queue")
       REDIS.hset("mail_#{item}", "sent", 1)
       report[:sends] += 1
