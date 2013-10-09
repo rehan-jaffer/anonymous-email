@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
   end
 
-  def mailbox(page)
+  def mailbox(page, uid)
 
    mail_paginator = RedisPagination.paginate('mailbox_#{uid}')
    keys = mail_paginator.page(page)[:items]

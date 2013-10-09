@@ -28,6 +28,15 @@ Note: This should be done over an SSL connection if they API is located on a dif
 
 * User login is accomplished by first acquiring a token via passing login credentials via POST params to /api/tokens.json, the result will be an auth_token used to achieve authentication on subsequence requests
 
+Example of the login process, and accessing a user's account details, this assumes using curl from the command-line (any tool that can send test requests will do):
+
+ * curl -d "email=example%40example.com&password=examplepassword" http://shielded-taiga-5671.herokuapp.com/api/tokens.json
+   * If credentials are correct (the user in the above example has been created and should work) the returned result would be {token: <token>}
+   * Tested result {"token":"QpA83tDb2948xzpyftpa"}
+ * curl http://shielded-taiga-5671.herokuapp.com/api/account.json?auth_token=QpA83tDb2948xzpyftpa
+   * This should return the user's account details, just a sample result to demonstrate use
+   * Tested result {"email":"example@example.com","received_emails":0,"anonymous_email":"gynqmevg@personal.bosonstudios.com"}
+
 === API Description:
   * User
     * /api/tokens.json
