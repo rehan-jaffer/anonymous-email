@@ -14,6 +14,8 @@ class Remailer < ActionMailer::Base
 
       end
 
+      Rails.logger.info attachments.to_yaml
+
       mail(to: mail_object["address"], subject: mail_object["subject"], attachments: mail_attachments) do |format|
               format.text { render text: mail_object["text"], layout: nil }
               format.html { render html: @content }
