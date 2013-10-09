@@ -6,9 +6,15 @@ class Remailer < ActionMailer::Base
     mail(to: mail_object["address"], subject: mail_object["subject"]) do |format|
               format.text { render text: mail_object["text"], layout: nil }
               format.html { render html: @content }
-    
-    end
 
-  end
+      if attachments.size > 0
+    
+        attachments.each do |attachment|
+          mail.attachments[attachment["name"]] = {mime_type: attachment["type"], content: attachment["content"]}
+        end
+
+      end
+    
+   end
 
 end
