@@ -16,6 +16,12 @@ Anonymail::Application.configure do
   config.serve_static_assets  = true
   config.static_cache_control = "public, max-age=3600"
 
+  ENV["REDISTOGO_URL"] = 'redis://localhost:6379'
+  config.action_mailer.default_url_options = { :host => 'localhost:14000' }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_options = {:from => "admin@anonymail.com"}
+  config.action_mailer.smtp_settings = {:address => "127.0.0.1", :port => 1025}
+
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
