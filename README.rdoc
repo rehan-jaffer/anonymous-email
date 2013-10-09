@@ -43,10 +43,10 @@ Example of the login process, and accessing a user's account details, this assum
 === API Description:
 * User
   * /api/tokens.json
-      * methods ->
-        * CREATE
-        * DESTROY
-      * In order to log in, the user passes an email and password as post params to this endpoint, if successful it will return {token: <auth_token>} which will be used in subsequent requests to verify the user's credentials
+    * methods ->
+      * CREATE
+      * DESTROY
+    * In order to log in, the user passes an email and password as post params to this endpoint, if successful it will return {token: <auth_token>} which will be used in subsequent requests to verify the user's credentials
 * Account
 * Mailbox
 * Mail
