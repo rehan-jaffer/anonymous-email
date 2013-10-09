@@ -14,6 +14,8 @@ class Remailer < ActionMailer::Base
         end
 
       end
+
+    end
     
    end
 
