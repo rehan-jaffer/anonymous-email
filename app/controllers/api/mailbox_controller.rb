@@ -8,7 +8,7 @@ class Api::MailboxController < ApplicationController
       page = params[:page] 
     end
 
-    render json: current_api_user.mailbox(page, current_api_user.uid)
+    render json: current_api_user.mailbox(page)
   end
 
 end
