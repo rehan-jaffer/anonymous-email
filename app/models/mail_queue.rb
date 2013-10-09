@@ -19,25 +19,25 @@ class MailQueue
 
     n = 0
 
-    if attachments > 0
+    if attachments.to_i > 0
       attachments.times do |n|
-        n += 1      
+        n += 1
         mail_attachments << REDIS.hgetall("mail_attachment_#{item}_#{n}")
       end
 
     end
 
-    begin
+#    begin
       mail = REDIS.hgetall("mail_#{item}")
       mailer = Remailer.remail(mail, mail_attachments).deliver
       REDIS.lpop("mail_queue")
       REDIS.hset("mail_#{item}", "sent", 1)
       report[:sends] += 1
-    rescue Exception => e
+#    rescue Exception => e
       Rails.logger.info e.inspect.to_yaml
       report[:failures] += 1
       REDIS.lpush("mail-errors", item)
-    end
+#    end
       Rails.logger.info report.to_yaml
 
     end
