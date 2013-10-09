@@ -36,12 +36,24 @@ class Mailbox
           datum["attachments"].each do |attachment|
             n += 1
             attachment = Attachment.new
+
+            filename = MD5.hexdigest(attachment["name"])
+
+            File.open(filename, "rw") do |f|
+              f.write attachment["content"]
+            end
+
+            attachment.content = File.read(filename)
+            attachment.save
+
             REDIS.rpush("mail_attachments", "#{mail_guid}_#{n}")
             REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "filename", attachment["name"])
             REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "type", attachment["type"])
             REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "content", attachment["content"])
             REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "base64", attachment["base64"])
           end
+
+          REDIS.hset("mail_#{mail_guid}", "has_attachments", 1)
 
         else
           REDIS.hset("mail_#{mail_guid}", "has_attachments", 0)
