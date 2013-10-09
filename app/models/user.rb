@@ -20,15 +20,29 @@ class User < ActiveRecord::Base
     
   end
 
-  def mailbox
+  def get_mail(guid, uid)
+
+   mail = REDIS.hget("mail_#{params[:guid]}")
+   if (mail.uid == uid)
+     return nil
+   else
+     return mail
+   end
+
+  end
+
+  def mailbox(page)
+
+   mail_paginator = RedisPagination.paginate('mailbox_#{uid}')
+   keys = mail_paginator.page(page)[:items]
 
    mail = []
-   keys = REDIS.lrange("mailbox_#{uid}", 0, 10)
    keys.each do |key|
 
      begin
        mail << REDIS.hgetall("mail_#{key}")
      end
+
 
    end
   
