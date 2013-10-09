@@ -34,9 +34,9 @@ class MailQueue
       REDIS.hset("mail_#{item}", "sent", 1)
       report[:sends] += 1
 #    rescue Exception => e
-      Rails.logger.info e.inspect.to_yaml
-      report[:failures] += 1
-      REDIS.lpush("mail-errors", item)
+#      Rails.logger.info e.inspect.to_yaml
+#      report[:failures] += 1
+#      REDIS.lpush("mail-errors", item)
 #    end
       Rails.logger.info report.to_yaml
 
