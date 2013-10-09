@@ -19,8 +19,8 @@ class MailQueue
 
     n = 0
 
-    if attachments.size > 0
-      attachments.each do |attachment|
+    if attachments > 0
+      attachments.times do |n|
         n += 1      
         mail_attachments = REDIS.hget("mail_attachment_#{item}_#{n}")
       end
