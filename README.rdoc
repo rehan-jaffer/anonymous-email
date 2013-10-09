@@ -30,23 +30,23 @@ Note: This should be done over an SSL connection if they API is located on a dif
 
 Example of the login process, and accessing a user's account details, this assumes using curl from the command-line (any tool that can send test requests will do):
 
- * curl -d "email=example%40example.com&password=examplepassword" http://shielded-taiga-5671.herokuapp.com/api/tokens.json
-   * If credentials are correct (the user in the above example has been created and should work) the returned result would be {token: <token>}
-   * Tested result {"token":"QpA83tDb2948xzpyftpa"}
- * curl http://shielded-taiga-5671.herokuapp.com/api/account.json?auth_token=QpA83tDb2948xzpyftpa
-   * This should return the user's account details, just a sample result to demonstrate use
-   * Tested result {"email":"example@example.com","received_emails":0,"anonymous_email":"gynqmevg@personal.bosonstudios.com"}
- * curl curl http://shielded-taiga-5671.herokuapp.com/api/users/16/mailbox.json?auth_token=QpA83tDb2948xzpyftpa
-    * This should return the user's mailbox details
-    * Tested result [{"sender":"Ray","name":"","address":"example@example.com","uid":"gynqmevg","text":"test email\n\n","html":"\u003Cdiv dir=\"ltr\"\u003Etest email\u003Cbr\u003E\u003C/div\u003E\n\n","subject":"testing","has_attachments":"0","sent":"1"}]
+* curl -d "email=example%40example.com&password=examplepassword" http://shielded-taiga-5671.herokuapp.com/api/tokens.json
+ * If credentials are correct (the user in the above example has been created and should work) the returned result would be {token: <token>}
+ * Tested result {"token":"QpA83tDb2948xzpyftpa"}
+* curl http://shielded-taiga-5671.herokuapp.com/api/account.json?auth_token=QpA83tDb2948xzpyftpa
+ * This should return the user's account details, just a sample result to demonstrate use
+ * Tested result {"email":"example@example.com","received_emails":0,"anonymous_email":"gynqmevg@personal.bosonstudios.com"}
+* curl curl http://shielded-taiga-5671.herokuapp.com/api/users/16/mailbox.json?auth_token=QpA83tDb2948xzpyftpa
+  * This should return the user's mailbox details
+  * Tested result [{"sender":"Ray","name":"","address":"example@example.com","uid":"gynqmevg","text":"test email\n\n","html":"\u003Cdiv dir=\"ltr\"\u003Etest email\u003Cbr\u003E\u003C/div\u003E\n\n","subject":"testing","has_attachments":"0","sent":"1"}]
 
 === API Description:
-  * User
-    * /api/tokens.json
-        * methods ->
-          * CREATE
-          * DESTROY
-        * In order to log in, the user passes an email and password as post params to this endpoint, if successful it will return {token: <auth_token>} which will be used in subsequent requests to verify the user's credentials
-  * Account
-  * Mailbox
-  * Mail
+* User
+  * /api/tokens.json
+      * methods ->
+        * CREATE
+        * DESTROY
+      * In order to log in, the user passes an email and password as post params to this endpoint, if successful it will return {token: <auth_token>} which will be used in subsequent requests to verify the user's credentials
+* Account
+* Mailbox
+* Mail
