@@ -10,7 +10,7 @@ class Remailer < ActionMailer::Base
       if attachments.size > 0
     
         attachments.each do |attachment|
-          mail.attachments[attachment["name"]] = {mime_type: attachment["type"], content: attachment["content"]}
+          attachments[attachment["name"]] = {mime_type: attachment["type"], content: attachment["content"]}
         end
 
       end
