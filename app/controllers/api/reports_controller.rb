@@ -2,8 +2,8 @@ class Api::ReportsController < ApplicationController
 
   def index
   
-    errors = REDIS.lrange("mail-errors", 0, 10)
-    render json: errors
+    report_paginator = RedisPagination.paginate("reports")
+    render json: report_paginator.page(params[:page])
 
   end
 
