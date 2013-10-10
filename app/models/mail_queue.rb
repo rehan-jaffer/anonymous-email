@@ -35,7 +35,7 @@ class MailQueue
       REDIS.hset("mail_#{item}", "sent", 1)
       report[:sends] += 1
 
-      succcess = Report.new(mail["from"], mail["to"], "success", "mail_#{item}")
+      success = Report.new(mail["from"], mail["to"], "success", "mail_#{item}")
       success.save      
 
     rescue Exception => e
