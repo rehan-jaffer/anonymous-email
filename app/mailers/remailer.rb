@@ -4,17 +4,17 @@ class Remailer < ActionMailer::Base
   def remail(mail_object, attachments)
     @content = mail_object["html"]
 
-      if attachments.size > 0
+#      if attachments.size > 0
     
-        mail_attachments = {}
+#        mail_attachments = {}
 
-        attachments.each do |attachment|
-          mail_attachments[attachment["name"]] = {mime_type: attachment["type"], content: attachment["content"]}
-        end
+#        attachments.each do |attachment|
+#          mail_attachments[attachment["name"]] = {mime_type: attachment["type"], content: attachment["content"]}
+#        end
 
-      end
+#      end
 
-      mail(to: mail_object["address"], subject: mail_object["subject"], attachments: mail_attachments) do |format|
+      mail(to: mail_object["address"], subject: mail_object["subject"]) do |format|
               format.text { render text: mail_object["text"], layout: nil }
               format.html { render html: @content }
 
