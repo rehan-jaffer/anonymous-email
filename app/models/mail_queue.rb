@@ -27,7 +27,7 @@ class MailQueue
 
     end
 
-#    begin
+    begin
 
       mail = REDIS.hgetall("mail_#{item}")
       mailer = Remailer.remail(mail, mail_attachments).deliver
@@ -35,18 +35,18 @@ class MailQueue
       REDIS.hset("mail_#{item}", "sent", 1)
       report[:sends] += 1
 
-#      succcess = Report.new(mail["from"], mail["to"], "success", "mail_#{item}")
-#      success.save      
+      succcess = Report.new(mail["from"], mail["to"], "success", "mail_#{item}")
+      success.save      
 
-#    rescue Exception => e
+    rescue Exception => e
 
-#      Rails.logger.info e.inspect.to_yaml
-#      report[:failures] += 1
+      Rails.logger.info e.inspect.to_yaml
+      report[:failures] += 1
 
-#      error = Report.new(mail["from"], mail["to"], "error", item)
-#      error.save
+      error = Report.new(mail["from"], mail["to"], "error", item)
+      error.save
 
-#    end
+    end
       Rails.logger.info report.to_yaml
 
     end
