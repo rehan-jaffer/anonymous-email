@@ -22,7 +22,7 @@ class Mailbox
 
         message_object = {}
         message_object[:sender] = datum["msg"]["from_email"]
-        message_object[:sender] = datum["msg"]["from_name"]
+        message_object[:name] = datum["msg"]["from_name"]
         message_object[:text] = datum["msg"]["text"]
         message_object[:html] = datum["msg"]["html"]
         message_object[:subject] = datum["msg"]["subject"]
