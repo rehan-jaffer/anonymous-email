@@ -8,6 +8,7 @@ class Api::MailController < ApplicationController
   def create
 
       if ENV['TEST_MODE'].nil?
+
         data = JSON.parse(params[:mandrill_events])
 
       else
@@ -22,9 +23,12 @@ class Api::MailController < ApplicationController
 
       Mailbox.add(data)
 
+      Rails.logger.info data
+
       render :status => 200, :text => nil, :layout => nil
 
      return
+
   end
 
   def new
@@ -34,7 +38,7 @@ class Api::MailController < ApplicationController
   end
 
   def show
-    render json: current_api_user.get_mail(params[:guid], current_api_user.uid)
+    render json: current_api_user.get_mail(params[:guid])
     return
   end
 
