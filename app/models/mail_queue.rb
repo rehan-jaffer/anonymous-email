@@ -35,7 +35,7 @@ class MailQueue
       REDIS.hset("mail_#{item}", "sent", 1)
       report[:sends] += 1
 
-      success = Report.new(mail["from"], mail["to"], "success", "mail_#{item}")
+      success = Report.new(mail["sender"], mail["address"], "success", "mail_#{item}")
       success.save      
 
     rescue Exception => e
@@ -43,7 +43,7 @@ class MailQueue
       Rails.logger.info e.inspect.to_yaml
       report[:failures] += 1
 
-      error = Report.new(mail["from"], mail["to"], "error", item)
+      error = Report.new(mail["sender"], mail["address"], "error", item)
       error.save
 
     end
