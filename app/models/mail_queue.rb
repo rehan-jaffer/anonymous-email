@@ -50,7 +50,7 @@ class MailQueue
 #    end
 #      Rails.logger.info report.to_yaml
 
-#    end
+    end
 
   end
 
