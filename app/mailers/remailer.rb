@@ -6,6 +6,8 @@ class Remailer < ActionMailer::Base
 
       if attachments_list.size > 0
     
+        Rails.logger.info attachments_list
+
         attachments_list.each do |attachment|
           attachments[attachment["name"]] = {mime_type: attachment["type"], content: attachment["content"]}
         end
