@@ -1,6 +1,8 @@
 Anonymail::Application.routes.draw do
 
-  root 'home#index'
+  root 'demo#index'
+
+  resource :demo
 
   namespace :users do
     
@@ -11,12 +13,13 @@ Anonymail::Application.routes.draw do
 
   namespace :api do
   
+    resources :reports
     resources :account, :only => [:index]
     resources :tokens, :only => [:create, :destroy]
     resources :mail, :only => [:create]
+    resources :mailbox
+    resources :mail
     resources :users do
-      resources :mail
-      resources :mailbox
     end
     devise_for :user, :module => "devise", :controllers => { :sessions => "api/sessions" }
 
