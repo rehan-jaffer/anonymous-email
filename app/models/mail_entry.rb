@@ -1,27 +1,24 @@
 class MailEntry
 
+  attr_reader :subject, :sender, :address, :name, :html, :text
+
   def initialize(mail_id)
     
     @id = mail_id
-    @mail = REDIS.hgetall("mail_#{mail_id}")
-
-  end
-
-  def subject
-    @mail.subject
-  end
-
-  def message(format="text")
-    msg = case format
-             when "text"
-               @mail.text
-             when "html"
-               @mail.html
-           end
-    return msg
+    mail = REDIS.hgetall("mail_#{mail_id}")
+    @subject = mail["subject"]
+    @sender = mail["sender"]
+    @address = mail["address"]
+    @text = mail["text"]
+    @html = mail["html"]    
+    @name = mail["name"]
   end
 
   def attachments
+
+    if !@attachments.nil?
+      return @attachments
+    end
 
     attachments = []
     attachment_count = REDIS.llen("mail_attachments_#{@id}")
@@ -31,7 +28,9 @@ class MailEntry
       attachments << REDIS.hgetall("mail_attachment_#{@id}_#{n}")
     end
 
-    return attachment
+    @attachments = attachments
+
+    return @attachments
 
   end
 
