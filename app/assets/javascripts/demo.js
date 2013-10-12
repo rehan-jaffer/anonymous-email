@@ -10,7 +10,7 @@ $(function() {
   });
 
   $(".mailbox-form").on("ajax:complete", function(e, xhr, settings, exception) {
-    $("#mailbox").innerHTML(JSON.stringify(xhr.responseJSON))
+    $("#mailbox").html(JSON.stringify(xhr.responseJSON))
   });
 
   $(".demo-account-form").on("ajax:complete", function(e, xhr, settings, exception) {
