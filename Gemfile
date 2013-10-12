@@ -7,6 +7,7 @@ gem 'paperclip'
 gem 'redis_pagination'
 gem 'rolify'
 gem 'kaminari'
+gem 'underscore-rails'
 
 # Use sqlite3 as the database for Active Record
 group :development do
