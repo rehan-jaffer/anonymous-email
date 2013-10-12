@@ -15,7 +15,7 @@ class MailQueue
 
     attachments = REDIS.llen("mail_attachments_#{item}")
 
-    attachment_list = REDIS.lrange("mail_attachments_#{item}", 0, attachments)
+    attachments_list = REDIS.lrange("mail_attachments_#{item}", 0, attachments)
 
     mail_attachments = []
 
@@ -27,8 +27,6 @@ class MailQueue
       end
 
     end
-
-    Rails.logger.info mail_attachments
 
     begin
 
