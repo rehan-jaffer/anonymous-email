@@ -15,7 +15,7 @@ class MailQueue
 
     attachments = REDIS.llen("mail_attachments_#{item}")
 
-    attachments_list = REDIS.lrange("mail_attachments_#{item}", 0, attachments)
+    attachments_list = REDIS.lrange("mail_attachments_#{item}", 0, attachments.to_i)
 
     mail_attachments = []
 
@@ -23,6 +23,7 @@ class MailQueue
 
     if attachments.to_i > 0
       attachments_list.each do |item_name|
+        Rails.logger.info item_name.to_yaml
         mail_attachments << REDIS.hgetall("mail_attachment_#{item_name}")
       end
 
