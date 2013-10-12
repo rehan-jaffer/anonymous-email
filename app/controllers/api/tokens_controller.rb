@@ -3,8 +3,8 @@ class Api::TokensController < ApplicationController
   respond_to :json
 
   def create
-    email = params[:email]
-    password = params[:password]
+    email = params["user"]["email"]
+    password = params["user"]["password"]
     if request.format != :json
       render :status => 406, :json => {:message => "The request must be json"}
       return
@@ -20,7 +20,7 @@ class Api::TokensController < ApplicationController
 
     @user = User.find_by_email(email)
     if @user.nil?
-      logger.info("User #{email} failed signin, user cannot be found.")
+      logger.info("User #{email} failed sign-in, user cannot be found.")
       render :status => 401, :json => {:message => invalidMsg}
       return
     end
