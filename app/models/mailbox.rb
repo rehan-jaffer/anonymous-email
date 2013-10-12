@@ -57,7 +57,6 @@ class Mailbox
 
         REDIS.hset("mail_#{mail_guid}", "sent", 0)
 
-        Rails.logger.info datum.to_yaml
 
      end
 
