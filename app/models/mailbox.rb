@@ -44,10 +44,10 @@ class Mailbox
           datum["msg"]["attachments"].each do |attachment|
             n += 1
             REDIS.rpush("mail_attachments_#{mail_guid}", "#{mail_guid}_#{n}")
-            REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "filename", attachment["name"])
-            REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "type", attachment["type"])
-            REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "content", attachment["content"])
-            REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "base64", attachment["base64"])
+            REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "filename", attachment[0]["name"])
+            REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "type", attachment[0]["type"])
+            REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "content", attachment[0]["content"])
+            REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "base64", attachment[0]["base64"])
           end
 
           REDIS.hset("mail_#{mail_guid}", "has_attachments", 1)
