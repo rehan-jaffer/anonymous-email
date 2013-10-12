@@ -1,3 +1,4 @@
+require 'pp'
 class Mailbox
 
   def self.add(data)
@@ -39,15 +40,18 @@ class Mailbox
 
           n = 0
 
-          Rails.logger.info data["msg"]["attachments"].to_json
+          pp(datum["msg"]["attachments"], debug_info)
+          Rails.logger.info debug_info
 
           datum["msg"]["attachments"].each do |attachment|
+
             n += 1
             REDIS.rpush("mail_attachments_#{mail_guid}", "#{mail_guid}_#{n}")
             REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "filename", attachment[0])
             REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "type", attachment[0][0]["type"])
             REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "content", attachment[0][0]["content"])
             REDIS.hset("mail_attachment_#{mail_guid}_#{n}", "base64", attachment[0][0]["base64"])
+
           end
 
           REDIS.hset("mail_#{mail_guid}", "has_attachments", 1)
