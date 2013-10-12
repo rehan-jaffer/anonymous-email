@@ -40,8 +40,7 @@ class Mailbox
 
           n = 0
 
-          pp(datum["msg"]["attachments"], debug_info)
-          Rails.logger.info debug_info
+          Rails.logger.info datum["msg"]["attachments"].to_json
 
           datum["msg"]["attachments"].each do |attachment|
 
