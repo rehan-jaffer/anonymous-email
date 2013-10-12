@@ -1,4 +1,4 @@
-class Mail
+class MailEntry
 
   def initializer(mail_id)
     

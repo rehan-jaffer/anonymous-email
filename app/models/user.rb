@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
    mail = []
 
    keys.each do |key|
-       mail << Mail.new(key)
+       mail << MailEntry.new(key)
    end
   
    return mail
