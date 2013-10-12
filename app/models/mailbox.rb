@@ -35,7 +35,7 @@ class Mailbox
         REDIS.hset("mail_#{mail_guid}", "html", message_object[:html])    
         REDIS.hset("mail_#{mail_guid}", "subject", message_object[:subject])    
 
-        if !datum["msg"]["attachments"].nil? && datum["msg"]["attachments"].to_a.size > 0 && 1 == 0
+        if !datum["msg"]["attachments"].nil? && datum["msg"]["attachments"].to_a.size > 0
 
           n = 0
 
