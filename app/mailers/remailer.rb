@@ -1,3 +1,5 @@
+require 'base64'
+
 class Remailer < ActionMailer::Base
   default from: "remailer@personal.bosonstudios.com"
 
@@ -8,7 +10,7 @@ class Remailer < ActionMailer::Base
     
         attachments_list.each do |attachment|
           Rails.logger.info attachment
-          attachments[attachment["filename"]] = {mime_type: attachment["type"], content: attachment["content"]}
+          attachments[attachment["filename"]] = {mime_type: attachment["type"], content: Base64.decode64(attachment["content"])}
         end
 
       end
