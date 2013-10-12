@@ -3,7 +3,7 @@ class Mail
   def initializer(mail_id)
     
     @id = mail_id
-    @mail = REDIS.hgetall("mail_#{mail_id}"
+    @mail = REDIS.hgetall("mail_#{mail_id}")
 
   end
 
