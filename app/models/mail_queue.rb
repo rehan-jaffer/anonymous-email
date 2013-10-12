@@ -15,14 +15,15 @@ class MailQueue
 
     attachments = REDIS.llen("mail_attachments_#{item}")
 
+    attachment_list = REDIS.lrange("mail_attachments_#{item}")
+
     mail_attachments = []
 
     n = 0
 
     if attachments.to_i > 0
-      attachments.times do |n|
-        n += 1
-        mail_attachments << REDIS.hgetall("mail_attachment_#{item}_#{n}")
+      attachments_list.each do |item_name|
+        mail_attachments << REDIS.hgetall("mail_attachment_#{item_name}")
       end
 
     end
