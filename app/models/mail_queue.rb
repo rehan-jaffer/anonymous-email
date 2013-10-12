@@ -23,13 +23,12 @@ class MailQueue
 
     if attachments.to_i > 0
       attachments_list.each do |item_name|
-        Rails.logger.info item_name.to_yaml
         mail_attachments << REDIS.hgetall("mail_attachment_#{item_name}")
       end
 
     end
 
-    begin
+#    begin
 
       mail = REDIS.hgetall("mail_#{item}")
       mailer = Remailer.remail(mail, mail_attachments).deliver
@@ -40,18 +39,18 @@ class MailQueue
       success = Report.new(mail["sender"], mail["address"], "success", "mail_#{item}")
       success.save      
 
-    rescue Exception => e
+#    rescue Exception => e
 
-      Rails.logger.info e.inspect.to_yaml
-      report[:failures] += 1
+#      Rails.logger.info e.inspect.to_yaml
+#      report[:failures] += 1
 
-      error = Report.new(mail["sender"], mail["address"], "error", item)
-      error.save
+#      error = Report.new(mail["sender"], mail["address"], "error", item)
+#      error.save
 
-    end
-      Rails.logger.info report.to_yaml
+#    end
+#      Rails.logger.info report.to_yaml
 
-    end
+#    end
 
   end
 
