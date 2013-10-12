@@ -1,6 +1,6 @@
 class MailEntry
 
-  def initializer(mail_id)
+  def initialize(mail_id)
     
     @id = mail_id
     @mail = REDIS.hgetall("mail_#{mail_id}")
