@@ -20,14 +20,9 @@ class User < ActiveRecord::Base
     
   end
 
-  def get_mail(guid, uid)
+  def get_mail(guid)
 
-   mail = REDIS.hget("mail_#{params[:guid]}")
-   if (mail.uid == uid)
-     return nil
-   else
-     return mail
-   end
+   return REDIS.hget("mail_#{params[:guid]}")
 
   end
 
@@ -41,7 +36,7 @@ class User < ActiveRecord::Base
    keys.each do |key|
 
      begin
-       mail << REDIS.hgetall("mail_#{key}")
+       mail << Mail.new(key)
      end
 
 
