@@ -5,7 +5,7 @@ class Api::MailboxController < ApplicationController
     if params[:page].nil?
       page = 0
     else
-      page = params[:page] 
+      page = params[:page].to_i
     end
 
     render json: current_api_user.mailbox(page)
