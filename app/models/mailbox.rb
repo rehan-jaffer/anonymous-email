@@ -39,7 +39,7 @@ class Mailbox
 
           n = 0
 
-          Rails.logger.info data["msg"]["attachments"]
+          Rails.logger.info data["msg"]["attachments"].to_json
 
           datum["msg"]["attachments"].each do |attachment|
             n += 1
