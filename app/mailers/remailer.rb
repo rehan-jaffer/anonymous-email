@@ -8,7 +8,7 @@ class Remailer < ActionMailer::Base
     
         attachments_list.each do |attachment|
           Rails.logger.info attachment
-          attachments[attachment["name"]] = {mime_type: attachment["type"], content: attachment["content"]}
+          attachments[attachment["filename"]] = {mime_type: attachment["type"], content: attachment["content"]}
         end
 
       end
