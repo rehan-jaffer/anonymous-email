@@ -1,7 +1,7 @@
 class Remailer < ActionMailer::Base
   default from: "remailer@personal.bosonstudios.com"
 
-  def remail(mail_object, attachment_list)
+  def remail(mail_object, attachments_list)
     @content = mail_object["html"]
 
       if attachment_list.size > 0
