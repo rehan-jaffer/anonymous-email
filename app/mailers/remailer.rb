@@ -4,7 +4,7 @@ class Remailer < ActionMailer::Base
   def remail(mail_object, attachments_list)
     @content = mail_object["html"]
 
-      if attachment_list.size > 0
+      if attachments_list.size > 0
     
         mail_attachments = {}
 
