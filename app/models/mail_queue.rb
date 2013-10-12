@@ -27,6 +27,8 @@ class MailQueue
 
     end
 
+    Rails.logger.info mail_attachments
+
     begin
 
       mail = REDIS.hgetall("mail_#{item}")
