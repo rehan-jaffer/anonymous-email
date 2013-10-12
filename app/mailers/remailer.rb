@@ -1,20 +1,20 @@
 class Remailer < ActionMailer::Base
   default from: "remailer@personal.bosonstudios.com"
 
-  def remail(mail_object, attachments)
+  def remail(mail_object, attachment_list)
     @content = mail_object["html"]
 
-#      if attachments.size > 0
+      if attachment_list.size > 0
     
-#        mail_attachments = {}
+        mail_attachments = {}
 
-#        attachments.each do |attachment|
-#          mail_attachments[attachment["name"]] = {mime_type: attachment["type"], content: attachment["content"]}
-#        end
+        attachments_list.each do |attachment|
+          attachments[attachment["name"]] = {mime_type: attachment["type"], content: attachment["content"]}
+        end
 
-#      end
+      end
 
-      mail(to: mail_object["address"], subject: mail_object["subject"]) do |format|
+      mail(to: mail_object["address"], from: mail_object["sender"], subject: mail_object["subject"]) do |format|
               format.text { render text: mail_object["text"], layout: nil }
               format.html { render html: @content }
 
