@@ -1,6 +1,6 @@
 class Api::MailboxController < ApplicationController
 
-#  before_filter :authenticate_user!
+  before_filter :authenticate_api_user!
 
   def index
 
