@@ -14,6 +14,10 @@ class MailEntry
     @name = mail["name"]
   end
 
+  def as_json({})
+    {:uid => @id, :subject => @sender, :address => @address, :text => @text, :html => @html, :name => @name}
+  end
+
   def attachments
 
     if !@attachments.nil?
