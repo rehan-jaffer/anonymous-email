@@ -4,8 +4,16 @@ var loginDemo = {
 
 $(function() {
 
-  $("a:data(guid)").on("click", function() {
-    alert("hi");
+  $(".mail").on("click", function(e) {
+    e.preventDefault();
+
+    $.ajax({
+      url: "/api/mail.json?guid=" + $(this).data("guid") + "&token=" + $.cookie("auth_token"),
+      }).done(function(data) {
+      alert(JSON.stringify(data));
+    });
+
+
   });
 
   $(document).on("ajax:beforeSend", function(evt, request, settings) {
