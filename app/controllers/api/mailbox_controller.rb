@@ -1,5 +1,7 @@
 class Api::MailboxController < ApplicationController
 
+#  before_filter :authenticate_user!
+
   def index
 
     if params[:page].nil?

@@ -9,4 +9,10 @@ class ApplicationController < ActionController::Base
     return "/users/dashboard"
   end
 
+  private
+
+   def check_sender_integrity
+
+   end
+
 end

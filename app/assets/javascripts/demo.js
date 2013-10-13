@@ -4,6 +4,14 @@ var loginDemo = {
 
 $(function() {
 
+  $(document).on("ajax:beforeSend", function(evt, request, settings) {
+    $("#console").append("Starting request at " + settings.url + "\r\n")
+  });
+
+  $(document).on("ajax:complete", function(e, xhr, settings) {
+    $("#console").append("Received: " + JSON.stringify(xhr.responseJSON) + "\r\n")
+  });
+
   $(".demo-login-form").on("ajax:complete", function(e, xhr, settings, exception) {
     $("#token").text(xhr.responseJSON["token"]);
     $.cookie("auth_token", xhr.responseJSON["token"]);

@@ -3,29 +3,27 @@ require 'json'
 
 class Api::MailController < ApplicationController
 
+  before_filter :authenticate_user!
+
   protect_from_forgery :except => [:create]
 
   def create
 
-      if ENV['TEST_MODE'].nil?
+      begin
+
+        check_sender_integrity
 
         data = JSON.parse(params[:mandrill_events])
+ 
+        Mailbox.add(data)
 
-      else
+        render :status => 200, :text => nil, :layout => nil
 
-        data = ""
+      rescue SecurityError => e
 
-        File.open("mail_data.txt", "r") do |f|
-          data = JSON.parse(f.read)
-        end
+
 
       end
-
-      Mailbox.add(data)
-
-      Rails.logger.info data
-
-      render :status => 200, :text => nil, :layout => nil
 
      return
 
