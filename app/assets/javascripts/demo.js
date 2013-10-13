@@ -15,6 +15,7 @@ $(function() {
   $(".demo-login-form").on("ajax:complete", function(e, xhr, settings, exception) {
     $("#token").text(xhr.responseJSON["token"]);
     $.cookie("auth_token", xhr.responseJSON["token"]);
+    $(".auth-token-input").val(xhr.responseJSON["token"]);
   });
 
   $(".mailbox-form").on("ajax:complete", function(e, xhr, settings, exception) {

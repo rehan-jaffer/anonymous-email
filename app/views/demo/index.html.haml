@@ -21,12 +21,13 @@
   .col-md-4
     %h2 Token
     #token
+      = auth_token
 
 .row
   .col-md-8
     %h2 Check Account Details
     = form_tag "/api/account.json", :class => "col-md-8 demo-account-form", :method => :get, :remote => true do
-      = hidden_field_tag "auth_token", auth_token
+      = hidden_field_tag "auth_token", auth_token, :class => "auth-token-input"
       %button.btn.btn-primary Get My Account Details
   .col-md-4
     .col-md-4#account
@@ -40,7 +41,7 @@
           = label_tag "Page"
         .col-md-4
           = text_field_tag 'page'
-          = hidden_field_tag "auth_token", auth_token
+          = hidden_field_tag "auth_token", auth_token, :class => "auth-token-input"
       %button.btn.btn-primary Get Mail
   .col-md-4
     .col-md-4#mailbox
