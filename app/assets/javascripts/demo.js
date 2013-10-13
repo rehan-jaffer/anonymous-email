@@ -4,7 +4,7 @@ var loginDemo = {
 
 $(function() {
 
-  $("a[data-guid=*]").on("click", function() {
+  $("*[data-guid]").on("click", function() {
     alert("hi");
   });
 
