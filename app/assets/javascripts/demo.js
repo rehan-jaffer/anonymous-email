@@ -8,7 +8,7 @@ $(function() {
     alert("hi");
   });
 
-  $(":not[data-guid='']").on("click", function() {
+  $(":not([data-guid=''])").on("click", function() {
     alert("hi");
   });
 
