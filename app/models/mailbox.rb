@@ -32,7 +32,7 @@ class Mailbox
         message_object[:html] = datum["msg"]["html"]
         message_object[:subject] = datum["msg"]["subject"]
 
-        REDIS.hset("mail_#{mail_guid}", "sender", message_object[:sender])    
+        REDIS.hset("mail_#{mail_guid}", "sender", message_object[:sender])
         REDIS.hset("mail_#{mail_guid}", "name", message_object[:name])    
         REDIS.hset("mail_#{mail_guid}", "address", real_address)
         REDIS.hset("mail_#{mail_guid}", "uid", uid)

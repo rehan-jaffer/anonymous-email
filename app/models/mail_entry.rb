@@ -17,7 +17,7 @@ class MailEntry
   end
 
   def as_json(opts={})
-    {:uid => @id, :subject => @sender, :address => @address, :text => @text, :html => @html, :name => @name, :has_attachments => @has_attachments, :sent => @sent}
+    {:uid => @id, :subject => @subject, :address => @address, :text => @text, :html => @html, :name => @name, :has_attachments => @has_attachments, :sent => @sent}
   end
 
   def attachments
