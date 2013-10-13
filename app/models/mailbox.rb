@@ -1,6 +1,10 @@
 require 'pp'
 class Mailbox
 
+  def initialize(uid)
+
+  end
+
   def self.add(data)
     
       alphabet = [('a'..'z'), ('A'..'Z')].map { |i| i.to_a }.flatten

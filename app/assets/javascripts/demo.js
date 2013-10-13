@@ -10,7 +10,13 @@ $(function() {
   });
 
   $(".mailbox-form").on("ajax:complete", function(e, xhr, settings, exception) {
-    $("#mailbox").html(JSON.stringify(xhr.responseJSON))
+    mail = xhr.responseJSON;
+
+    mail_template = "<table class = 'col-md-4'><thead><th class = 'col-md-2'>From</th><th class = 'col-md-2'>Subject</th></thead>"
+
+    rows = _.map(xhr.responseJSON, function(element, index, list) { return '<tr><td class = "col-md-2"><%= element["sender"] %></td><td class = "col-md-2"><%= element["subject"] %></td></tr>' } ).join("\r\n")
+
+    $("#mailbox").html(mail_template + rows)
   });
 
   $(".demo-account-form").on("ajax:complete", function(e, xhr, settings, exception) {

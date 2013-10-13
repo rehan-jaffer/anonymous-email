@@ -13,6 +13,14 @@ class User < ActiveRecord::Base
    save
   end
 
+  def make_admin!
+    add_role :admin
+  end
+
+  def unmake_admin!
+    remove_role :admin
+  end
+
   def generate_uid(length)
 
   alphabet = [('a'..'z')].map { |i| i.to_a }.flatten
