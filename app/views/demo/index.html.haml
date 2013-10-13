@@ -33,15 +33,16 @@
     .col-md-4#account
 
 .row
-  .col-md-8
-    %h2 Check my Mailbox
+  .col-md-4
+    %h2 Mailbox
     = form_tag "/api/mailbox.json", :class => "col-md-8 log mailbox-form log", :method => :get, :remote => true do
       .row
-        .col-md-4
+        .col-md-3
           = label_tag "Page"
-        .col-md-4
+        .col-md-1
           = text_field_tag 'page'
           = hidden_field_tag "auth_token", auth_token, :class => "auth-token-input"
-      %button.btn.btn-primary Get Mail
-  .col-md-4
-    .col-md-4#mailbox
+        .col-md-4
+          %button.btn.btn-primary Get Mail
+  .col-md-8
+    .col-md-8#mailbox
