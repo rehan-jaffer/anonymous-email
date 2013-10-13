@@ -4,11 +4,7 @@ var loginDemo = {
 
 $(function() {
 
-  $("[data-guid]").on("click", function() {
-    alert("hi");
-  });
-
-  $(":not([data-guid=''])").on("click", function() {
+  $("a:data(guid)").on("click", function() {
     alert("hi");
   });
 
