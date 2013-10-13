@@ -4,6 +4,10 @@ var loginDemo = {
 
 $(function() {
 
+  $("a[data-guid=*]").on("click", function() {
+    alert("hi");
+  });
+
   $(document).on("ajax:beforeSend", function(evt, request, settings) {
     $("#console").append("Starting request at " + settings.url + "\r\n")
     $("#console").scrollTop(($("#console").scrollTop()+50))
