@@ -12,10 +12,12 @@ class MailEntry
     @text = mail["text"]
     @html = mail["html"]    
     @name = mail["name"]
+    @has_attachments = mail["has_attachments"]
+    @sent = mail["sent"]
   end
 
-  def as_json({})
-    {:uid => @id, :subject => @sender, :address => @address, :text => @text, :html => @html, :name => @name}
+  def as_json(opts={})
+    {:uid => @id, :subject => @sender, :address => @address, :text => @text, :html => @html, :name => @name, :has_attachments => @has_attachments, :sent => @sent}
   end
 
   def attachments
