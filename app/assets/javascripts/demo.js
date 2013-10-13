@@ -11,7 +11,9 @@ $(function() {
       url: "/api/mail.json?guid=" + $(this).data("guid") + "&token=" + $.cookie("auth_token"),
       }).done(function(data) {
       alert(JSON.stringify(data));
-    });
+    }).error(function(data) {
+      alert("error");
+    });;
 
 
   });
