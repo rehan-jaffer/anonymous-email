@@ -8,12 +8,13 @@ $(function() {
     e.preventDefault();
 
     $.ajax({
-      url: "/api/mail.json?guid=" + $(this).data("guid") + "&token=" + $.cookie("auth_token"),
+      method: "GET",
+      url: "/api/mail/" + $(this).data("guid") + ".json?token=" + $.cookie("auth_token"),
       }).done(function(data) {
       alert(JSON.stringify(data));
     }).error(function(data) {
-      alert("error");
-    });;
+      alert(JSON.stringify(data));
+    });
 
 
   });
