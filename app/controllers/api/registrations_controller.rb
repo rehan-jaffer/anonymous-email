@@ -7,7 +7,7 @@ class Api::RegistrationsController < Devise::RegistrationsController
     user = User.new(user_params)
 
     if user.save
-      render :json => {"status" => "successfully registered, you have been sent a confirmation email"}, :status=>201
+      render :json => {"status" => "successfully registered, you have been sent a confirmation email"}.to_json, :status=>201
       return
     else
       warden.custom_failure!
