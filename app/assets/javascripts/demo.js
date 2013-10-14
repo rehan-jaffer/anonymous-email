@@ -4,21 +4,6 @@ var loginDemo = {
 
 $(function() {
 
-  $(".mail").on("click", function(e) {
-    e.preventDefault();
-
-    $.ajax({
-      method: "GET",
-      url: "/api/mail/" + $(this).data("guid") + ".json?token=" + $.cookie("auth_token"),
-      }).done(function(data) {
-      alert(JSON.stringify(data));
-    }).error(function(data) {
-      alert(JSON.stringify(data));
-    });
-
-
-  });
-
   $(document).on("ajax:beforeSend", function(evt, request, settings) {
     $("#console").append("Starting request at " + settings.url + "\r\n")
     $("#console").scrollTop(($("#console").scrollTop()+50))
@@ -48,6 +33,21 @@ $(function() {
     rows = _.map(xhr.responseJSON, function(element, index, list) { return '<tr><td class = "col-md-2">' + element["sender"] + ' / ' + element["name"] + '</td><td class = "col-md-2"><a class = "mail" data-guid="' + element["uid"]  + '">' + element["subject"] + '</a></td><td><a href = "#">' + element["has_attachments"] + '</a></td></tr>' } ).join("\r\n")
 
     $("#mailbox").html(mail_template + rows)
+
+      $(".mail").on("click", function(e) {
+
+        $.ajax({
+         method: "GET",
+         url: "/api/mail/" + $(this).data("guid") + ".json?token=" + $.cookie("auth_token"),
+         }).done(function(data) {
+         alert(JSON.stringify(data));
+         }).error(function(data) {
+         alert(JSON.stringify(data));
+        });
+
+
+    });
+
   });
 
   $(".demo-account-form").on("ajax:complete", function(e, xhr, settings, exception) {
