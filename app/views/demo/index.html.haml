@@ -16,20 +16,15 @@
           .col-md-4
             = label_tag "Password"
           .col-md-4
-            = text_field_tag "user[password]"
+            = password_field_tag "user[password]"
         .row
           .col-md-4
             = label_tag "Password Confirmation"
           .col-md-4
-            = text_field_tag "user[password_confirmation]"
+            = password_field_tag "user[password_confirmation]"
         .row
           .form-actions.col-md-8
             %button.btn.btn-success Sign up
-
-  .col-md-4
-    %h2 Email Address
-    #email_address
- 
 
   .col-md-8
     %h2 Login Example

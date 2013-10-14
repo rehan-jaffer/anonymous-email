@@ -16,7 +16,9 @@ class Mailbox
         Rails.logger.info datum.to_json
         begin
           uid = datum["msg"]["to"][0][0].split("@")[0]
-          real_address = User.find_by_uid(uid).email
+          @user = User.find_by_uid(uid)
+          real_address = @user.email
+          @user.received_emails += 1
         rescue
           uid = "example"
           real_address = "example@example.com"
