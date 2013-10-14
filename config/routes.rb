@@ -21,7 +21,7 @@ Anonymail::Application.routes.draw do
     resources :mail
     resources :users do
     end
-    devise_for :user, :module => "devise", :controllers => { :sessions => "api/sessions" }
+    devise_for :user, :module => "devise", :controllers => { :sessions => "api/sessions", :registrations => "api/registrations" }
 
   end
 
