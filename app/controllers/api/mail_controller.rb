@@ -38,7 +38,7 @@ class Api::MailController < ApplicationController
   end
 
   def show
-    render json: current_api_user.get_mail(params[:guid])
+    render json: current_api_user.get_mail(params[:id])
     return
   end
 
