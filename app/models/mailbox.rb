@@ -18,6 +18,9 @@ class Mailbox
           uid = datum["msg"]["to"][0][0].split("@")[0]
           @user = User.find_by_uid(uid)
           real_address = @user.email
+          if @user.received_mails.nil?
+            @user.received_mails = 0
+          end
           @user.received_emails += 1
         rescue
           uid = "example"
