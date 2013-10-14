@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
 
   def get_mail(guid)
 
-   return REDIS.hget("mail_#{params[:guid]}")
+   return REDIS.hgetall("mail_#{guid}")
 
   end
 
