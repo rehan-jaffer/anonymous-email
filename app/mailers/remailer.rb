@@ -9,7 +9,7 @@ class Remailer < ActionMailer::Base
       if attachments_list.size > 0
     
         attachments_list.each do |attachment|
-          if attachment["base64"] == true
+          if attachment["base64"] == "true"
             attachments[attachment["filename"]] = {mime_type: attachment["type"], content: Base64.decode64(attachment["content"])}
           else
             attachments[attachment["filename"]] = {mime_type: attachment["type"], content: attachment["content"]}
