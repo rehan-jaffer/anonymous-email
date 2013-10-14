@@ -35,6 +35,11 @@ $(function() {
     $(".auth-token-input").val(xhr.responseJSON["token"]);
   });
 
+  $(".registration-form").on("ajax:success", function(e, xhr, settings, exception) {
+    $("#email_address").text(xhr.responseJSON["anonymous_email"]);
+    $("#email_address").append("<br /><br />A confirmation email was sent to the email address you supplied, you will need to confirm it before using the rest of the functionality");
+  });
+
   $(".mailbox-form").on("ajax:complete", function(e, xhr, settings, exception) {
     mail = xhr.responseJSON;
 

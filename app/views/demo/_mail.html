@@ -1,0 +1,20 @@
+<script type = "text/html" id = "#mail-list">
+<% _.each(xhr.responseJSON, function(element, index, list) { %>
+<div class = "col-md-4">
+
+  <div class = "col-md-1 address-field">
+   <%= element["address"] %>
+  </div>
+  <div class = "col-md-1 to-field">
+   <%= element["sender"] %>
+  </div>
+  <div class = "col-md-1 subject-field">
+   <%= element["subject"] %>
+  </div>
+  <div class = "col-md-1 has-attachments-field">
+   <%= element["has_attachments"] %>
+  </div>
+
+</div>
+<% }); %>
+</script>

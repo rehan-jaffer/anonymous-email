@@ -3,6 +3,8 @@ require 'json'
 
 class Api::MailController < ApplicationController
 
+  respond_to :json
+
   before_filter :authenticate_api_user!, :except => [:create]
 
   protect_from_forgery :except => [:create]

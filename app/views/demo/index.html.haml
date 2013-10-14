@@ -1,6 +1,36 @@
 #console.col-md-12
 
 .row
+
+  .col-md-8
+    %h2 Sign-up Example
+    = form_tag api_user_registration_path(:format => :json), :class => "col-md-8 registration-form", :remote => true, :method => :post do
+
+      .devise-registration-form.form-inputs
+        .row
+          .col-md-4
+            = label_tag "Email Address"
+          .col-md-4
+            = text_field_tag "user[email]"
+        .row
+          .col-md-4
+            = label_tag "Password"
+          .col-md-4
+            = text_field_tag "user[password]"
+        .row
+          .col-md-4
+            = label_tag "Password Confirmation"
+          .col-md-4
+            = text_field_tag "user[password_confirmation]"
+        .row
+          .form-actions.col-md-8
+            %button.btn.btn-success Sign up
+
+  .col-md-4
+    %h2 Email Address
+    #email_address
+ 
+
   .col-md-8
     %h2 Login Example
     = form_tag api_tokens_path(:format => :json), :class => "col-md-8 log demo-login-form log", :remote => true do
