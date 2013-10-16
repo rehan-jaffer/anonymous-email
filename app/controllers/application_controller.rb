@@ -22,9 +22,9 @@ class ApplicationController < ActionController::Base
 
    def check_sender_integrity
 
-       encoding_string = HOOK_URL
+       encoding_string = ENV['HOOK_URL']
 
-       Rails.logger.info HOOK_URL
+       Rails.logger.info ENV['HOOK_URL']
 
        params.except(:action, :controller).keys.sort.each do |key|
           encoding_string += CGI.unescape(key.to_s)
