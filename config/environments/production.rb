@@ -77,13 +77,19 @@ Anonymail::Application.configure do
   # Disable automatic flushing of the log to improve performance.
   # config.autoflush_log = false
 
-  config.action_mailer.default_url_options = {:host => 'shielded-taiga-5671.herokuapp.com'}
+  config.from_address = "admin@personal.bosonstudios.com"
+  config.host = 'shielded-taiga-5671.herokuapp.com'
+  config.domain = "personal.bosonstudios.com"
+
+  HOOK_URL = 'http://shielded-taiga-5671.herokuapp.com/api/mail'
+
+  config.action_mailer.default_url_options = {:host => config.from_address}
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_options = {:from => "admin@personal.bosonstudios.com"}
+  config.action_mailer.default_options = {:from => config.from_address}
   config.action_mailer.smtp_settings = {
     :address => "smtp.mandrillapp.com",
     :port    => "587",
-    :domain  => 'personal.bosonstudios.com',
+    :domain  => config.domain,
     :user_name => "ray@thelondonvandal.com",
     :password => "3h1ixEfqtEcLWAlTES9VZw"
   }

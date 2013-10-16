@@ -13,9 +13,9 @@ class Api::MailController < ApplicationController
 
       begin
 
-        check_sender_integrity
-
         data = JSON.parse(params[:mandrill_events])
+
+        check_sender_integrity
  
         Mailbox.add(data)
 

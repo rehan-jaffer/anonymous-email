@@ -20,9 +20,9 @@ class ApplicationController < ActionController::Base
      "DQ9S63FpFBFr5mCJiAXvtw"
    end
 
-   def check_sender_integrity(data)
+   def check_sender_integrity
 
-       encoding_string = "http://bosonstudios.com:19999/api/mail"
+       encoding_string = HOOK_URL
 
        params.except(:action, :controller).keys.sort.each do |key|
           encoding_string += CGI.unescape(key.to_s)
