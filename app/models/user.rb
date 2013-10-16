@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :token_authenticatable
 
+  rolify
+
   validates_uniqueness_of :email
 
   after_create :add_uid
