@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
        if webhook_key == generated_signature
          return true
        else
-         raise MandrillAuthenticationError
+         raise SecurityError
        end
 
    end
