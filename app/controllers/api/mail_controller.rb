@@ -23,7 +23,8 @@ class Api::MailController < ApplicationController
 
       rescue SecurityError => e
 
-        render :status => 500, :text => nil, :layout => nil
+        Rails.logger.info e.inspect
+        render :status => 500, :text => e.inspect, :layout => nil
 
       end
 
