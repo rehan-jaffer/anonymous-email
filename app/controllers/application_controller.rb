@@ -39,9 +39,7 @@ class ApplicationController < ActionController::Base
        if webhook_key == generated_signature
          return true
        else
-         Rails.logger.info generated_signature
-         Rails.logger.info webhook_key
-         raise SecurityError
+         raise SecurityError, :error => "#{generated_signature} does not match #{webhook_key}"
        end
 
    end
