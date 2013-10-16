@@ -17,7 +17,7 @@ class ApplicationController < ActionController::Base
   private
 
    def auth_key
-     "DQ9S63FpFBFr5mCJiAXvtw"
+     ENV['MANDRILL_AUTH_KEY']
    end
 
    def check_sender_integrity

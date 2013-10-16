@@ -82,6 +82,7 @@ Anonymail::Application.configure do
   config.domain = "personal.bosonstudios.com"
 
   ENV['HOOK_URL'] = 'http://shielded-taiga-5671.herokuapp.com/api/mail'
+  ENV['MANDRILL_AUTH_KEY'] = "BI-EZiACZDFoDkxbtyu8dw"
 
   config.action_mailer.default_url_options = {:host => config.from_address}
   config.action_mailer.delivery_method = :smtp

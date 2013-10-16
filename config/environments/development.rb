@@ -11,7 +11,8 @@ Anonymail::Application.configure do
 
   ENV["REDISTOGO_URL"] = 'redis://localhost:6379' 
 
-  HOOK_URL = 'http://bosonstudios.com:19999/api/mail'
+  ENV['HOOK_URL'] = 'http://bosonstudios.com:19999/api/mail'
+  ENV['MANDRILL_AUTH_KEY'] = "DQ9S63FpFBFr5mCJiAXvtw"
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
