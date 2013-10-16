@@ -24,6 +24,8 @@ class ApplicationController < ActionController::Base
 
        encoding_string = HOOK_URL
 
+       Rails.logger.info HOOK_URL
+
        params.except(:action, :controller).keys.sort.each do |key|
           encoding_string += CGI.unescape(key.to_s)
           encoding_string += params[key]
