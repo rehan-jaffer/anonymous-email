@@ -3,7 +3,7 @@ require 'spec_helper'
 describe "Login Process API" do
 
   before(:all) do
-    post "/api/tokens.json", :email => @user.email, :password => @user.password
+    post "/api/tokens.json", :user => {:email => @user.email, :password => @user.password}
     expect(response).to be_success
     @token = JSON.parse(response.body)["token"]
   end

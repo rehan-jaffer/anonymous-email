@@ -39,7 +39,13 @@ class Api::MailController < ApplicationController
   end
 
   def show
-    render json: current_api_user.get_mail(params[:id])
+
+    if current_api_user.has_role?("admin")
+      render json: User.get_mail(params[:id])
+    else
+      render json: current_api_user.get_mail(params[:id])
+    end
+
     return
   end
 

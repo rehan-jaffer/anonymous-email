@@ -13,6 +13,7 @@ Anonymail::Application.configure do
 
   ENV['HOOK_URL'] = 'http://bosonstudios.com:19999/api/mail'
   ENV['MANDRILL_AUTH_KEY'] = "DQ9S63FpFBFr5mCJiAXvtw"
+  ENV['EMAIL_DOMAIN'] = "test.bosonstudios.com"
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true

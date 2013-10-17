@@ -51,8 +51,12 @@ class User < ActiveRecord::Base
   
   end
 
+  def anonymous_email
+    "#{uid}@#{ENV['EMAIL_DOMAIN']}"
+  end
+
   def as_json(opts={})
-    {:email => email, :received_emails => received_emails, :anonymous_email => "#{uid}@personal.bosonstudios.com"}
+    {:email => email, :received_emails => received_emails, :anonymous_email => "#{uid}@#{ENV['EMAIL_DOMAIN']}"}
   end
 
 end

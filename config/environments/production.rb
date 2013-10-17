@@ -15,6 +15,7 @@ Anonymail::Application.configure do
   config.action_controller.perform_caching = true
 
   ENV['REDISTOGO_URL'] = "redis://redistogo:ece77f182bc343814fff10c0aff85660@soldierfish.redistogo.com:9070/"
+  ENV['EMAIL_DOMAIN'] = "personal.bosonstudios.com"
 
   # Enable Rack::Cache to put a simple HTTP cache in front of your application
   # Add `rack-cache` to your Gemfile before enabling this.

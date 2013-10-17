@@ -42,7 +42,7 @@ RSpec.configure do |config|
 
   config.before(:all) do
     random_seed = rand(99999999999999).round()
-    @user = User.create(:email => "test#{random_seed}@test.com", :password => "testpassword")
+    @user = User.create(:email => "sendhere+ext#{random_seed}@gmail.com", :password => "testpassword")
     @user.confirm!
   end
 
