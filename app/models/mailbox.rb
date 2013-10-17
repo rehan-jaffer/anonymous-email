@@ -14,14 +14,14 @@ class Mailbox
 
         output_var = ""
         Rails.logger.info datum.to_json
-#        begin
+        begin
           uid = datum["msg"]["to"][0][0].split("@")[0]
           @mail_user = User.find_by_uid(uid)
           real_address = @mail_user.email
-#        rescue
-#          uid = "example"
-#          real_address = "example@example.com"
-#        end
+        rescue
+          uid = "example"
+          real_address = "example@example.com"
+        end
 
         REDIS.rpush("mailbox_#{uid}", mail_guid)
         REDIS.rpush("mail_queue", mail_guid)
