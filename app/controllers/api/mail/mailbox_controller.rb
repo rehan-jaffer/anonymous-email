@@ -10,19 +10,19 @@ class Api::Mail::MailboxController < ApplicationController
       page = params[:page].to_i
     end
 
-   if current_api_user.has_role?(:admin)
+   if current_api_mail_user.has_role?(:admin)
       render json: User.find(params[:user_id]).mailbox(page).to_json
       return
     end
 
-    if params[:user_id] && !current_api_user.has_role?(:admin)
+    if params[:user_id] && !current_api_mail_user.has_role?(:admin)
       raise SecurityError
     end
 
-    if current_api_user.has_role?("admin")
+    if current_api_mail_user.has_role?("admin")
       render json: User.find(params[:id]).to_json
     else
-      render json: current_api_user.mailbox(page).to_json
+      render json: current_api_mail_user.mailbox(page).to_json
     end
   end
 
