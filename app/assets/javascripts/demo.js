@@ -38,7 +38,7 @@ $(function() {
 
         $.ajax({
          method: "GET",
-         url: "/api/mail/mailbox.json?" + $(this).data("guid") + ".json?token=" + $.cookie("auth_token"),
+         url: "/api/mail/mail.json?" + $(this).data("guid") + ".json?token=" + $.cookie("auth_token"),
          }).done(function(data) {
          alert(JSON.stringify(data));
          }).error(function(data) {
