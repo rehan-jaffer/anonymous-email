@@ -1,11 +1,11 @@
 require 'redis'
 require 'json'
 
-class Api::MailController < ApplicationController
+class Api::Mail::MailController < ApplicationController
 
   respond_to :json
 
-  before_filter :authenticate_api_user!, :except => [:create]
+  before_filter :authenticate_api_mail_user!, :except => [:create]
 
   protect_from_forgery :except => [:create]
 

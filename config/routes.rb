@@ -12,6 +12,8 @@ Anonymail::Application.routes.draw do
   end
 
   namespace :api do
+
+    namespace :mail do
   
     resources :reports
     resources :account, :only => [:index]
@@ -19,9 +21,12 @@ Anonymail::Application.routes.draw do
     resources :mail, :only => [:create]
     resources :mailbox
     resources :mail
+    devise_for :user, :module => "devise", :controllers => { :sessions => "api/mail/sessions", :registrations => "api/mail/registrations" }
+
     resources :users do
     end
-    devise_for :user, :module => "devise", :controllers => { :sessions => "api/sessions", :registrations => "api/registrations" }
+
+    end
 
   end
 

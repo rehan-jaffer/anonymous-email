@@ -1,5 +1,5 @@
 require 'pp'
-class Mailbox
+class Api::Mail::Mailbox
 
   def initialize(uid)
 

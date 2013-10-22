@@ -4,7 +4,7 @@
 
   .col-md-8
     %h2 Sign-up Example
-    = form_tag api_user_registration_path(:format => :json), :class => "col-md-8 registration-form", :remote => true, :method => :post do
+    = form_tag api_mail_user_registration_path(:format => :json), :class => "col-md-8 registration-form", :remote => true, :method => :post do
 
       .devise-registration-form.form-inputs
         .row
@@ -28,7 +28,7 @@
 
   .col-md-8
     %h2 Login Example
-    = form_tag api_tokens_path(:format => :json), :class => "col-md-8 log demo-login-form log", :remote => true do
+    = form_tag api_mail_tokens_path(:format => :json), :class => "col-md-8 log demo-login-form log", :remote => true do
       .row
         .col-md-4
           = label_tag "Email"
@@ -51,7 +51,7 @@
 .row
   .col-md-8
     %h2 Check Account Details
-    = form_tag "/api/account.json", :class => "col-md-8 demo-account-form", :method => :get, :remote => true do
+    = form_tag "/api/mail/account.json", :class => "col-md-8 demo-account-form", :method => :get, :remote => true do
       = hidden_field_tag "auth_token", auth_token, :class => "auth-token-input"
       %button.btn.btn-primary Get My Account Details
   .col-md-4
@@ -60,7 +60,7 @@
 .row
   .col-md-4
     %h2 Mailbox
-    = form_tag "/api/mailbox.json", :class => "col-md-8 log mailbox-form log", :method => :get, :remote => true do
+    = form_tag "/api/mail/mailbox.json", :class => "col-md-8 log mailbox-form log", :method => :get, :remote => true do
       .row
         .col-md-3
           = label_tag "Page"

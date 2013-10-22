@@ -1,6 +1,6 @@
-class Api::MailboxController < ApplicationController
+class Api::Mail::MailboxController < ApplicationController
 
-  before_filter :authenticate_api_user!
+  before_filter :authenticate_api_mail_user!
 
   def index
 

@@ -1,5 +1,6 @@
 task :send_mail => :environment do
 
-  MailQueue.dispatch
+  Api::Mail::MailQueue.dispatch
 
 end
+

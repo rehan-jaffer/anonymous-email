@@ -1,4 +1,4 @@
-class Report
+class Api::Mail::Report
 
   def initialize(from, to, type, message)
     @from = from

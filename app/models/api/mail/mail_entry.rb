@@ -1,4 +1,4 @@
-class MailEntry
+class Api::Mail::MailEntry
 
   attr_reader :subject, :sender, :address, :name, :html, :text
 
