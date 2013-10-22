@@ -20,7 +20,7 @@ Anonymail::Application.routes.draw do
     resources :tokens, :only => [:create, :destroy]
 #    resources :mail, :only => [:create]
     resources :mailbox
-    resources :entry, :only => [:create]
+    resources :entry, :only => [:create, :show]
     devise_for :user, :module => "devise", :controllers => { :sessions => "api/mail/sessions", :registrations => "api/mail/registrations" }
 
     resources :users do
