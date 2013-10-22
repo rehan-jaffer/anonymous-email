@@ -18,7 +18,7 @@ Anonymail::Application.routes.draw do
     resources :reports
     resources :account, :only => [:index]
     resources :tokens, :only => [:create, :destroy]
-    resources :mail, :only => [:create]
+#    resources :mail, :only => [:create]
     resources :mailbox
     resources :entry
     devise_for :user, :module => "devise", :controllers => { :sessions => "api/mail/sessions", :registrations => "api/mail/registrations" }
